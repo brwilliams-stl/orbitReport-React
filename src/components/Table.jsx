@@ -13,18 +13,13 @@ const Table = ({ sat }) => {
      </thead>
      <tbody>
      {sat.map((sat, id) => {
-      let status;
-      if (sat.operational) {
-        status = "Active";
-      } else {
-        status = "Inactive";
-      }
+      let status = (operational) => {return operational ? "Active" : "Inactive"};
       return (
         <tr key={id}>
           <td>{sat.name}</td>
           <td>{sat.type}</td>
           <td>{sat.launchDate}</td>
-          <td>{status}</td>
+          <td>{status(sat.operational)}</td>
         </tr>
       )
      })}
