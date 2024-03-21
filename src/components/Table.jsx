@@ -1,15 +1,33 @@
+import './styling.css';
+
 const Table = ({ sat }) => {
   return (
     <table>
     <thead>
      <tr>
-       <th>Header TBD</th>
+       <th>Name</th>
+       <th>Type</th>
+       <th>Launch Date</th>
+       <th>Status</th>
      </tr>
      </thead>
      <tbody>
-     <tr>
-       <td>Row Data TBD</td>
-     </tr>
+     {sat.map((sat, id) => {
+      let status;
+      if (sat.operational) {
+        status = "Active";
+      } else {
+        status = "Inactive";
+      }
+      return (
+        <tr key={id}>
+          <td>{sat.name}</td>
+          <td>{sat.type}</td>
+          <td>{sat.launchDate}</td>
+          <td>{status}</td>
+        </tr>
+      )
+     })}
      </tbody>
    </table>
   );
